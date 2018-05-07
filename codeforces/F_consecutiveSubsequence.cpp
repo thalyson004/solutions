@@ -11,7 +11,7 @@ using namespace std;
 int n, maior = 0, id;
 
 int G[MAXN], v[MAXN], q[MAXN];
-unordered_map<int,int> mapa;
+map<int,int> mapa;
 
 main(){
     cin >> n;
