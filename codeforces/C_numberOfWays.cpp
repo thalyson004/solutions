@@ -1,39 +1,33 @@
 #include <bits/stdc++.h>
-#define MAXN 1005
-#define int long long
 using namespace std;
+#define MAXL 400005
+#define MAXA 300
+#define ff first
+#define ss second
+#define int long long
 
-#define pos first
-#define vel second
-
-int v[500005];
-int sum[500005];
-map<int,int> todo;
+int n;
+int v[500005], presum[500005], possum[500005];
+map<int,int > mapa;
+int total;
 
 main(){
-    int n;
-    int s = 0;
     scanf("%lld", &n);
-    for(int i = 0; i < n;i++){
-        scanf("%lld", &v[i]);
-        s += v[i];
-        todo[s]++;
+    for(int i = 1; i <= n; i++) scanf("%lld", &v[i]);
+
+    for(int i = 1; i <= n; i++){
+        total += v[i];
+        presum[i] = presum[i-1] + v[i];
+        mapa[ presum[i] ] ++;
     }
 
-    todo[s]--;
-
-    if(s%3){
-        printf("0\n");
-    }else{
-        int ss = 0;
-        int ans = 0;
-        for(int i = 0; i+2 < n;i++){
-            ss += v[i];
-            todo[ss]--;
-            if(ss*3LL == s)
-                ans += todo[ ss*2LL ];
-        }
-        printf("%lld\n", ans);
+    int ans = 0;
+    for(int i =1; i< n; i++){
+        int s = presum[i];
+        mapa[s]--;
+        if(total != s*3LL) continue;
+        ans += mapa[ s*2LL ];
+        if( presum[n]==s*2LL )ans--;
     }
-
+    printf("%lld\n", ans);
 }
