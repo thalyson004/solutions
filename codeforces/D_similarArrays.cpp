@@ -5,12 +5,7 @@ using namespace std;
 main(){
    int n, m;
    scanf("%lld %lld", &n, &m);
-
-   if(n==1LL or m >= (n*n - n)/2LL ){
-      printf("NO\n");
-      return 0;
-   }
-
+   
    vector<vector<int>> comp(n+1);
    for(int i = 1; i <= m; i++){
       int a, b;
@@ -18,8 +13,6 @@ main(){
       comp[a].push_back(b);
       comp[b].push_back(a);
    }
-   for(int i = 1; i <= n; i++)
-      sort( comp[i].begin(), comp[i].end() );
 
    int ok = 0;
    vector<int> A(n+1);
