@@ -30,7 +30,6 @@ const int dy[4] = {0, 1, -1, 0};
 int N, M, D;
 
 vector< vector<int> > G;
-vector< pair<int,int> > edges;
 vector< int > go;
 queue< int > qq;
 vector< int > component;
@@ -49,7 +48,6 @@ void solve(){
    G.clear();
    G = vector< vector<int> > (N+1);
    go.clear();
-   edges.clear();
 
    for(int i = 0; i < M; i++){
       int u, v;
