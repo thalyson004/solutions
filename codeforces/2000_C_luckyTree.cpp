@@ -33,7 +33,6 @@ int N;
 vector< ii > G[200005];
 int c[200005];
 int dp[200005];
-int father[200005];
 
 int isLucky(int n){
    int ans = 1;
@@ -45,7 +44,6 @@ int isLucky(int n){
 }
 
 int count(int v, int p = -1){
-   father[v]=p;
    for(auto par:G[v]){
       int u = par.F;
       if(p!=u){
@@ -108,3 +106,5 @@ main(){
       solve();
    }
 }
+
+
