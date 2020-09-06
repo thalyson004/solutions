@@ -1,34 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
+    
+    
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode *ans = new ListNode(0);
-        ListNode *a = ans;
-        while(l1!=NULL){
-            a->val += l1->val;
-            if(l1->next!=NULL){
-                a->next = new ListNode(0);
+        ListNode *resp=NULL, *last;
+        int s = 0;
+        
+        while(l1!=NULL || l2!=NULL || s){
+            if(l1!=NULL){
+                s+=l1->val;
+                l1 = l1->next;
             }
-            a=a->next;
-            l1=l1->next;
-        }
-        a = ans;
-        while(l2!=NULL){
-            a->val += l2->val;
-            if(a->next==NULL and l2->next!=NULL ){
-                a->next = new ListNode(0);
+            if(l2!=NULL){
+                s+=l2->val;
+                l2 = l2->next;
             }
-            a=a->next;
-            l2=l2->next;
+            if( resp==NULL ) resp = last = new ListNode( s%10 );
+            else last->next = new ListNode(s%10), last = last->next;
+            s /= 10;
         }
-        a = ans;
-        while(a!=NULL){
-            if(a->val > 9){
-                if(a->next==NULL) a->next = new ListNode(0);
-                a->next->val += a->val/10;
-                a->val %= 10;
-            }
-            a=a->next;
-        }
-        return ans;
+        
+        return resp;
     }
 };
