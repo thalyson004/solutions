@@ -31,8 +31,9 @@ public:
                 ans = min(ans, s);
             }
         }
-        
+
         if(ans==A.size()+1) return -1;
         else return ans;
+        //OK
     }
 };
