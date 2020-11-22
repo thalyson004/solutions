@@ -71,8 +71,6 @@ const int dy8[8] = { 0,  1, 1, 1, 0, -1, -1, -1};
 //Main
 int N, M, P, CASES;
 
-vector<vector<int>> piles;
-
 main(){
    std::ios::sync_with_stdio(false);
    cin.tie(0);
