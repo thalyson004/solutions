@@ -11,27 +11,24 @@
  */
 class Solution {
     bool check(TreeNode* root, int target){
-        target--;
-        
         int level = 0;
         {
             int cur = target;
-            while(cur >= (1<<level)){
-                cur -= (1<<level);
+            while(cur){
                 level++;
+                cur = cur >> 1;
             }
         }
         
-        int remain = target-( (1<<(level)) - 1);
-        
-        for(int i = level-1; i >= 0; i--){
+        for(int i = level-2; i >= 0; --i){
             if(root == nullptr) return false;
-            if(remain&(1<<i)){
+            if(target&(1<<i)){
                 root = root->right;
             }else{
                 root = root->left;
             }
         }
+        
         return root != nullptr;
     }
     
